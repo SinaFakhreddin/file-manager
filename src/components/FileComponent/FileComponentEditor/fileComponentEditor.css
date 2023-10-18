@@ -1,0 +1,79 @@
+.code-editor-container{
+    position: relative;
+    height: 500px;
+    color: #ffffff;
+}
+
+.code-input ,
+.code-output {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100% !important;
+    padding: 1rem;
+    border: none;
+    font-family: Consolas, Monaco , "Andale Mono" , "Ubuntu Mono" , monospace;
+    font-size: .8rem;
+    background: transparent;
+    white-space: pre-wrap;
+    line-height: 1.5rem;
+    word-wrap: break-word;
+}
+
+.code-input {
+    opacity: 1;
+    margin: 0;
+    resize: none;
+    padding: 15px;
+    font-size: .8rem;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+
+.code-output{
+    pointer-events: none;
+    z-index: 3;
+    margin: 0;
+    background: transparent !important;
+
+}
+
+code {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 1rem;
+    background: #fff;
+    display: block;
+    font-size: .8rem;
+    font-family: "PT Mono" , monospace;
+}
+
+pre {
+    background: #fff;
+
+}
+
+.code-editor-container > pre {
+    height: 100%;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 1rem;
+    --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.code-editor-container > textarea {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.code-editor-container :not(pre)>code[class*="language-"],
+.code-editor-container pre[class*=""] {
+    background: transparent;
+    margin: 0;
+}
