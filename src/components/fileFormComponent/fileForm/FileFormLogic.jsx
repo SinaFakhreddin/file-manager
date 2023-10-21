@@ -43,6 +43,7 @@ export const FileFormLogic = withFormik({
             const fileData = await (await file.get()).data()
            await props.dispatch(createFileHandler({...fileData , docId: file.id} ))
            await toast.success("create File Successful")
+            props.showModal(false)
         }).catch((err)=>toast.error(`${err}`))
 
 

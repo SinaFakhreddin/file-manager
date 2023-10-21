@@ -68,9 +68,9 @@ const DashboardComponent = () => {
                 <Route path={'folder/:folderId'} element={<FolderComponent/>}/>
                 <Route path={'file/:fileId'} element={<FileComponent/>}/>
             </Routes>
-            {createFoldersModal && <MyDialogue title={"CREATE FOLDERS"} closeModal={()=>setCreateFoldersModal(false)} children={<CreateFolderFormLogic userFolders={userFolders}  user={user} currentFolder={currentFolder} dispatch={dispatch} currentRoute={currentRoute} currentFolderData={currentFolderData}/>}/>}
-            {createFilesModal && <MyDialogue title={"CREATE FILES"} closeModal={() => setCreateFilesModal(false)} children={<FileFormLogic userFiles={userFiles}  user={user} currentFolder={currentFolder} dispatch={dispatch} currentRoute={currentRoute} />}/>}
-            {uploadModal && <MyDialogue title={"UPLOAD FILES"} closeModal={() => setUploadModal(false)} children={<UploadFormLogic userFiles={userFiles}  user={user} currentFolder={currentFolder} dispatch={dispatch} currentRoute={currentRoute} progressUploadFile={progressUploadFile}/>}/>}
+            {createFoldersModal && <MyDialogue title={"CREATE FOLDERS"} closeModal={()=>setCreateFoldersModal(false)} children={<CreateFolderFormLogic showModal={setCreateFoldersModal} userFolders={userFolders}  user={user} currentFolder={currentFolder} dispatch={dispatch} currentRoute={currentRoute} currentFolderData={currentFolderData}/>}/>}
+            {createFilesModal && <MyDialogue title={"CREATE FILES"} closeModal={() => setCreateFilesModal(false)} children={<FileFormLogic showModal={setCreateFilesModal} userFiles={userFiles}  user={user} currentFolder={currentFolder} dispatch={dispatch} currentRoute={currentRoute} />}/>}
+            {uploadModal && <MyDialogue title={"UPLOAD FILES"} closeModal={() => setUploadModal(false)} children={<UploadFormLogic userFiles={userFiles}  user={user} currentFolder={currentFolder} dispatch={dispatch} currentRoute={currentRoute} showModal={setUploadModal} progressUploadFile={progressUploadFile}/>}/>}
 
         </>
     );

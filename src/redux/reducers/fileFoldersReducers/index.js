@@ -16,7 +16,7 @@ const initialState = {
     userFiles:[],
     userFolders:[],
     currentRout:[],
-    uploadedFiles:[],
+    // uploadedFiles:[],
     progressUploadFile:{
         progressPercent:0,
         showProgressBar:false

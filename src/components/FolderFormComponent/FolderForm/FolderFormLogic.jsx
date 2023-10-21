@@ -36,8 +36,9 @@ export const CreateFolderFormLogic = withFormik({
                }
                fire.firestore().collection("folders").add(data).then(async (folder)=>{
                    const folderData = await (await folder.get()).data()
-                   props.dispatch(createFolder(folderData))
-                   toast.success("folder is created successfully")
+                   await props.dispatch(createFolder(folderData))
+                   await toast.success("folder is created successfully")
+                     props.showModal(false)
                }).catch(error=>toast.error(`${error}`))
 
        }catch (e) {

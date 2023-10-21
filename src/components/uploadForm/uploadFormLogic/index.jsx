@@ -31,15 +31,14 @@ export const UploadFormLogic = withFormik({
                 url:null,
                 data:""
         }
+        console.log("uploaded",uploadedFileData)
         props.dispatch(setProgressBarShow(true))
         const uploadFileLocation = fire.storage().ref(`files/uploaded_file/${props.user.uid}/${fileData.name}`)
         const uploadTask =  uploadFileLocation.put(fileData)
         uploadTask.on(`state_changed` ,async function  Progress(snapshot){
             const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes)*100)
                 props.dispatch(setProgressBar(progress))
-            if (progress==100){
-                toast.success("upload success")
-            }
+
 
         },
             error => {
@@ -54,9 +53,11 @@ export const UploadFormLogic = withFormik({
                 fire.firestore().collection("files").add(newData).then(async (file)=>{
                     const uploadedFileId = file.id
                     await props.dispatch(createFileHandler({...newData ,docId: uploadedFileId}))
-                    toast.success("file Upload successful")
                     props.dispatch(setProgressBarShow(false))
                    props.dispatch(setProgressBar(0))
+                   await toast.success("file Upload successful")
+                    props.showModal(false)
+
                 })
 
             }
