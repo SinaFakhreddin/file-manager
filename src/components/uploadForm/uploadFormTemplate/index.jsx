@@ -2,27 +2,17 @@ import React, {useCallback} from 'react';
 import {Form } from "formik"
 import InputForm from "./../../CustomInputWithFormik";
 import CircularLoading from "../../Loading/Loading.jsx";
-import {RiDragDropLine} from "react-icons/ri"
-import MyDropZone from "../../MyDropZone/index.jsx";
 
 
 const UploadFormTemplate = (props) => {
-
-    console.log("props",props)
 
     return (
         <Form
             sub
             className="space-y-6">
             <div>
-                <InputForm setFieldValue={props.handleChange} handleChange={props.handleChange} type={'file'}  name={"fileName"} label={"fileName"}  errorClassName={'text-red-500 text-xs'}/>
-                {/*<MyDropZone setFieldValue={props.setFieldValue}/>*/}
+                <InputForm type={'file'} setFieldValue={props.setFieldValue}  name={"fileName"} label={"fileName"}  errorClassName={'text-red-500 text-xs'}/>
             </div>
-            {/*<div className={'border border-2 border-dashed rounded py-6 flex flex-col items-center justify-center text-gray-400'}>*/}
-            {/*    <span>Drag And Drop Zone... !</span>*/}
-            {/*    <RiDragDropLine size={25}/>*/}
-            {/*</div>*/}
-
             <div className={'flex flex-col '}>
                 <button
                     type="submit"

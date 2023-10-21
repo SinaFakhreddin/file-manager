@@ -13,6 +13,7 @@ import {compareTwoArrayOfString} from "../../../helper/index.js";
 
 export const FileFormLogic = withFormik({
     mapPropsToValues:(props)=>{
+        console.log("props",props)
         return {
             name:""
         }

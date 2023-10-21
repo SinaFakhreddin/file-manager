@@ -2,8 +2,9 @@ import React from 'react';
 import {AiFillFile} from "react-icons/ai"
 import {AiFillFolderOpen} from "react-icons/ai"
 import {useNavigate} from "react-router-dom";
-import {shallowEqual, useDispatch, useSelector} from "react-redux";
+import { useDispatch} from "react-redux";
 import {setChangeFolder} from "../../../redux/actions/index.jsx";
+import {truncateFunction} from "../../../helper/index.js";
 
 const DashboardDataComponents = ({title , items , type , setShowGallery}) => {
     const navigate  = useNavigate()
@@ -49,7 +50,7 @@ const DashboardDataComponents = ({title , items , type , setShowGallery}) => {
             <div className={'w-[90%] p-4 flex gap-4 flex-wrap  mx-auto'}>
                 {
                     items?.map((item , index)=>{
-                        console.log("items",item)
+                        console.log("item",item)
                         return (
                             <div onClick={()=>handleDoubleClick(item.docId  )} className={'flex w-[30%] flex-col items-center gap-2 cursor-pointer  p-4 border shadow-md rounded-lg '} key={index}>
                                 {
@@ -61,7 +62,7 @@ const DashboardDataComponents = ({title , items , type , setShowGallery}) => {
                                             </div>
                                 }
 
-                                <span className={'text-sm fon-semibold'}>{item?.name}</span>
+                                <span className={'text-sm font-semibold'}>{truncateFunction(item?.name , 20)}</span>
                             </div>
                         )
                     })

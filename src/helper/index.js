@@ -17,6 +17,15 @@ export const compareTwoArrayOfString = (a , b)=>{
         return result;
     }
 
+}
+
+
+export const truncateFunction = (text , length)=>{
+    console.log(text,length)
+    if (text.length > length){
+       return text.substring(0,length) + "..."
+    }
+        return text
 
 
 }

@@ -42,7 +42,6 @@ export const CreateFolderFormLogic = withFormik({
 
        }catch (e) {
            toast.error(`${e}`)
-           console.log("error",e)
        }
 
     },
