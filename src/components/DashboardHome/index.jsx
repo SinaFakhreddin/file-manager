@@ -52,8 +52,6 @@ const DashboardHome = () => {
         }
     }, [ isLoading,userId , dispatch]);
 
-    console.log("here",showGallery)
-
     return (
         <>
             {

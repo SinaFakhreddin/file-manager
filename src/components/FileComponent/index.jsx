@@ -18,9 +18,6 @@ const FileComponent = () => {
         setData(currentFileData?.data)
     }, [currentFileData]);
 
-    console.log("state",useSelector(state=>state.fileFolders.userFiles))
-
-
     return (
         <div className={'flex flex-col'}>
             <FileComponentHeader currentFileData={currentFileData} prevData={currentFileData?.data} data={data}/>
