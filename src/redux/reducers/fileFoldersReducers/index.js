@@ -2,8 +2,8 @@ import {
     ADD_FILES,
     ADD_FOLDER,
     CHANGE_FOLDER, CHANGE_ROUTE, CREATE_FILE,
-    CREATE_FOLDERS, SAVE_FILE_DATA,
-    SET_LOADING, UPLOAD_FILE_DATA
+    CREATE_FOLDERS, PROGRESS_BAR_COUNT, SAVE_FILE_DATA,
+    SET_LOADING, SHOW_PROGRESS_BAR, UPLOAD_FILE_DATA
 } from "../../actions/actionsTypes/index.js";
 import {saveFileDataHandler} from "../../actions/index.jsx";
 
@@ -16,7 +16,11 @@ const initialState = {
     userFiles:[],
     userFolders:[],
     currentRout:[],
-    uploadedFiles:[]
+    uploadedFiles:[],
+    progressUploadFile:{
+        progressPercent:0,
+        showProgressBar:false
+    }
 }
 
 
@@ -79,6 +83,23 @@ export const FileFoldersReducers = (state=initialState , action)=>{
 
                     } else return userFile
                 })
+
+            }
+        case PROGRESS_BAR_COUNT:
+            return {
+                ...state,
+                progressUploadFile: {
+                    ...state.progressUploadFile,
+                    progressPercent: action.payload
+                }
+            }
+        case SHOW_PROGRESS_BAR:
+            return  {
+                ...state ,
+                progressUploadFile: {
+                    ...state.progressUploadFile,
+                    showProgressBar: action.payload
+                }
 
             }
 

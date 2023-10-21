@@ -3,8 +3,8 @@ import {
     ADD_FOLDER, CHANGE_FOLDER, CHANGE_ROUTE, CREATE_FILE,
     CREATE_FOLDERS,
     LOG_IN_USER,
-    LOG_OUT_USER, SAVE_FILE_DATA,
-    SET_LOADING
+    LOG_OUT_USER, PROGRESS_BAR_COUNT, SAVE_FILE_DATA,
+    SET_LOADING, SHOW_PROGRESS_BAR
 } from "./actionsTypes/index.js";
 
 export const logInUser = (payload)=>{
@@ -77,6 +77,22 @@ export const addFilesHandler = (payload)=>{
 export const saveFileDataHandler = (payload)=>{
     return {
         type: SAVE_FILE_DATA,
+        payload
+    }
+}
+
+
+export const setProgressBar = (payload)=>{
+
+    return {
+        type:PROGRESS_BAR_COUNT,
+        payload
+    }
+}
+
+export const setProgressBarShow = (payload)=>{
+    return {
+        type:SHOW_PROGRESS_BAR,
         payload
     }
 }

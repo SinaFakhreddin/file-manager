@@ -18,7 +18,7 @@ const DashboardComponent = () => {
     const [createFoldersModal, setCreateFoldersModal] = useState(false);
     const [createFilesModal, setCreateFilesModal] = useState(false);
     const [uploadModal, setUploadModal] = useState(false);
-    const {userFolders , user  , currentFolder ,isAuthenticated , userFiles,currentFolderData,currentRoute} = useSelector((state)=>({
+    const {userFolders , user  , currentFolder ,isAuthenticated , userFiles,currentFolderData,currentRoute , progressUploadFile} = useSelector((state)=>({
         userFolders : state?.fileFolders?.userFolders ,
         user:state?.auth?.user,
         userId:state?.auth?.user?.uid,
@@ -28,8 +28,10 @@ const DashboardComponent = () => {
         currentFolderData:state?.fileFolders?.userFolders?.find((folder)=>folder.docId===state.fileFolders.currentFolder),
         currentRoute : state?.fileFolders?.currentRout,
         userFiles:state?.fileFolders?.userFiles,
-
+        progressUploadFile:state?.fileFolders?.progressUploadFile
     }), shallowEqual)
+
+    console.log("fileFolder",progressUploadFile)
     const dispatch = useDispatch()
     const [showSubBar, setShowSubBar] = useState(true);
 
@@ -68,7 +70,7 @@ const DashboardComponent = () => {
             </Routes>
             {createFoldersModal && <MyDialogue title={"CREATE FOLDERS"} closeModal={()=>setCreateFoldersModal(false)} children={<CreateFolderFormLogic userFolders={userFolders}  user={user} currentFolder={currentFolder} dispatch={dispatch} currentRoute={currentRoute} currentFolderData={currentFolderData}/>}/>}
             {createFilesModal && <MyDialogue title={"CREATE FILES"} closeModal={() => setCreateFilesModal(false)} children={<FileFormLogic userFiles={userFiles}  user={user} currentFolder={currentFolder} dispatch={dispatch} currentRoute={currentRoute} />}/>}
-            {uploadModal && <MyDialogue title={"UPLOAD FILES"} closeModal={() => setUploadModal(false)} children={<UploadFormLogic userFiles={userFiles}  user={user} currentFolder={currentFolder} dispatch={dispatch} currentRoute={currentRoute}/>}/>}
+            {uploadModal && <MyDialogue title={"UPLOAD FILES"} closeModal={() => setUploadModal(false)} children={<UploadFormLogic userFiles={userFiles}  user={user} currentFolder={currentFolder} dispatch={dispatch} currentRoute={currentRoute} progressUploadFile={progressUploadFile}/>}/>}
 
         </>
     );

@@ -5,13 +5,24 @@ import CircularLoading from "../../Loading/Loading.jsx";
 
 
 const UploadFormTemplate = (props) => {
+    console.log("FUCKINGPROPS",props.isSubmitting, props.progressUploadFile)
+
 
     return (
         <Form
             sub
             className="space-y-6">
             <div>
-                <InputForm type={'file'} setFieldValue={props.setFieldValue}  name={"fileName"} label={"fileName"}  errorClassName={'text-red-500 text-xs'}/>
+                <InputForm type={'file'}   name={"fileName"} label={"fileName"}  errorClassName={'text-red-500 text-xs'}/>
+
+                { props.progressUploadFile?.showProgressBar &&
+                    <div className={'px-[2px]'}>
+                        <div className=" w-full bg-gray-200 rounded-full h-1.5 mb-4 dark:bg-gray-700">
+                            <div className="bg-green-600 h-1 rounded-full dark:bg-green-500" style={{width:`${props?.progressUploadFile?.progressPercent}%`}}></div>
+                        </div>
+                    </div>
+                }
+
             </div>
             <div className={'flex flex-col '}>
                 <button
